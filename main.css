@@ -100,40 +100,40 @@ body {
 				font-weight: bold;
 
 			}
-				.element[number="2"],
-				.element[number="4"] {
+				.element[data-number="2"],
+				.element[data-number="4"] {
 					color: #797067;
 				}
-				.element[number="2"] {
+				.element[data-number="2"] {
 					background-color: #eee4da;
 				}
-				.element[number="4"] {
+				.element[data-number="4"] {
 					background-color: #ece0c8;
 				}
-				.element[number="8"] {
+				.element[data-number="8"] {
 					background-color: #f2b179;
 				}
-				.element[number="16"] {
+				.element[data-number="16"] {
 					background-color: #f59563;
 				}
-				.element[number="32"] {
+				.element[data-number="32"] {
 					background-color: #f57c5f;
 				}
-				.element[number="64"] {
+				.element[data-number="64"] {
 					background-color: #f65d3b;
 				}
-				.element[number="128"] {
+				.element[data-number="128"] {
 					background-color: #eacf76;
 				}
-				.element[number="256"] {
+				.element[data-number="256"] {
 					background-color: #edcb67;
 				}
-				.element[number="512"] {
+				.element[data-number="512"] {
 					background-color: #ecc850;
 				}
-				.element[number="1024"] {
+				.element[data-number="1024"] {
 					background-color: #e7c258;
 				}
-				.element[number="2048"] {
+				.element[data-number="2048"] {
 					background-color: #e8be4e;
 				}
