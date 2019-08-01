@@ -1,0 +1,139 @@
+body {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+	background-color: #fbf8ef;
+}
+
+/* Стартовая (левая) панель */
+.start-panel {
+	width: 40%;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	justify-content: space-around;
+}
+	.logo__container {
+		width: 100%;
+	}
+		.logo__content {
+			width: 100%;
+		}
+	.start-game {
+		width: 50%;
+		padding: 2%;
+		margin: 0 auto;
+		color: #fff;
+		background-color: #bbada0;
+		border-radius: 2%;
+		border: 3px solid #fff;
+		font-size: 32px;
+		-webkit-transition: 1s;
+		-o-transition: 1s;
+		transition: 1s;
+	}
+	.start-game:hover {
+		color: #bbada0;
+		background-color: #d6cdc4;
+		border: 3px solid #bbada0;
+		-webkit-transition: 1s;
+		-o-transition: 1s;
+		transition: 1s;
+	}
+/* Игровое поле */
+.container {
+	width: 45%;
+}
+	.container__wrapper {
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		padding-bottom: 100%; // пропорции блока определяются здесь
+	}
+		.container__content {
+			position: absolute;
+			top: 0;
+			left: -0.5px;
+			padding: 1%;
+			min-width: 98%;
+			min-height: 98%;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			display: -o-flex;
+			display: flex;
+			-webkit-flex-wrap: wrap;
+			-moz-flex-wrap: wrap;
+			-ms-flex-wrap: wrap;
+			-o-flex-wrap: wrap;
+			flex-wrap: wrap;
+			background-color: #b7ab9d;
+			justify-content: space-between;
+			align-content: stretch;
+		}
+		/* Элементы игрового поля */
+			.element {
+				flex-basis: 23%;
+				background-color: #d6cdc4;
+				border-radius: 5%;
+				margin: 1%;
+				display: -webkit-flex;
+				display: -moz-flex;
+				display: -ms-flex;
+				display: -o-flex;
+				display: flex;
+				color: #fff;
+				justify-content: center;
+				-ms-align-items: center;
+				align-items: center;
+				font-size: 300%;
+				font-weight: bold;
+
+			}
+				.element[number="2"],
+				.element[number="4"] {
+					color: #797067;
+				}
+				.element[number="2"] {
+					background-color: #eee4da;
+				}
+				.element[number="4"] {
+					background-color: #ece0c8;
+				}
+				.element[number="8"] {
+					background-color: #f2b179;
+				}
+				.element[number="16"] {
+					background-color: #f59563;
+				}
+				.element[number="32"] {
+					background-color: #f57c5f;
+				}
+				.element[number="64"] {
+					background-color: #f65d3b;
+				}
+				.element[number="128"] {
+					background-color: #eacf76;
+				}
+				.element[number="256"] {
+					background-color: #edcb67;
+				}
+				.element[number="512"] {
+					background-color: #ecc850;
+				}
+				.element[number="1024"] {
+					background-color: #e7c258;
+				}
+				.element[number="2048"] {
+					background-color: #e8be4e;
+				}
