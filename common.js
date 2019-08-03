@@ -6,10 +6,7 @@ function generateNumber() {
 };
 
 //функция генерации новой ячейки на поле
-function createNumber() {
-	//проверка на то осталось ли место на поле для новой ячейки
-	if(!document.querySelector('[data-number = "0"]')) return alert("Игра окончена!");
-	
+function createNumber() {	
 	//массив со случайными координатами
 	let numberCoordinates = generateNumber(),
 	//ячейка находящаяся по случайно сгенерированным координатам
@@ -186,8 +183,7 @@ document.addEventListener('keydown', function (event) {
 			delZero(3, j, "left");
 			delZero(2, j, "left");
 			delZero(1, j, "left");
-		}
-			
+		}		
 	}
 	//если нажата стрелочка ↑
 	if (event.keyCode == 38) {
@@ -227,7 +223,83 @@ document.addEventListener('keydown', function (event) {
 	} 
 	//вызов функции для занесения в определенные атрибуты значений по умолчанию
 	sumAbort();
+	//проверка на то осталось может ли игра дальше продолжаться
+	if(!document.querySelector('[data-number = "0"]')) {
+		endGame();
+	}
 });
+
+//фунция проверки на конец игры 
+//поиск ввозможных комбинаций во всех направлениях,
+//если находится хоть одна, то игра продолжается, иначе конец игры
+function endGame() {
+	//тригер на наличие комбинаций
+	let check;
+	//проверка на нажатие стрелочки ← 
+	for(let j = 0; j < 4; j++)
+		for(let i = 3; i > 0; i--) {
+			check = endGameCheck(i, j, "left");
+			//есть комбинация
+			if (check) return;
+		} 		
+	//проверка на нажатие стрелочки ↑
+	for(let j = 3; j > 0; j--)
+		for(let i = 0; i < 4; i++) {
+			check = endGameCheck(i, j, "up");
+			//есть комбинация
+			if (check) return;
+		}
+	//проверка на нажатие стрелочки →
+	for(let j = 0; j < 4; j++)
+		for(let i = 0; i < 3; i++) {
+			check = endGameCheck(i, j, "right");
+			//есть комбинация
+			if (check) return;
+		}
+	//проверка на нажатие стрелочки ↓
+	for(let j = 0; j < 3; j++)
+		for(let i = 0; i < 4; i++) {
+			check = endGameCheck(i, j, "down");
+			//есть комбинация
+			if (check) return;
+		}
+	//комбинаций нет
+	if (!check) {
+		alert("Игра окончена!");
+		//переменная хранящая кнопку "начать игру"
+		let button = document.getElementsByClassName('start-game')[0];
+		//генерация клика на кнопку
+		button.click();
+	}
+}
+
+//функция проверки на наличие суммируемых элементов
+function endGameCheck (i, j, direction) {
+	//массив элементов из выбранной строки
+	let elems = [];
+	//занесение начального элемента в массив
+	elems.push(findElem(i, j));
+	//выбор направления и занесение в массив дополнительных элементов
+	if (direction == "right") {
+		elems.push(findElem(i + 1, j));
+	} else if (direction == "left") {
+		elems.push(findElem(i - 1, j));
+	} else if (direction == "down") {
+		elems.push(findElem(i, j + 1));
+	} else if (direction == "up") {
+		elems.push(findElem(i, j - 1));
+	}; 
+	//проверка на наличие элементов, которые можно суммировать
+	if ((elems[0].getAttribute("data-number") == elems[1].getAttribute("data-number")) && 
+			(elems[0].getAttribute("data-number") != 0 && elems[1].getAttribute("data-number") != 0) && 
+			(elems[0].getAttribute("data-sum") == "true" && elems[1].getAttribute("data-sum") == "true")) {
+		//элемент есть
+		return true;
+	} else {
+		//элемента нет
+		return false;
+	}
+}
 
 
 
