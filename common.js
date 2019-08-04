@@ -10,7 +10,7 @@ function createNumber() {
 	//массив со случайными координатами
 	let numberCoordinates = generateNumber(),
 	//ячейка находящаяся по случайно сгенерированным координатам
-			number = document.querySelector('[data-posX = "' + numberCoordinates[0] + '"][data-posY = "' +
+		number = document.querySelector('[data-posX = "' + numberCoordinates[0] + '"][data-posY = "' +
 		numberCoordinates[1] + '"]');
 	//цикл закончится тогда когда будет выбрана пустая ячейка 
 	while(number.getAttribute('data-number') != 0) {
@@ -121,7 +121,14 @@ function moveElem(i, j, direction) {
 			(elems[0].getAttribute("data-sum") == "true" && elems[1].getAttribute("data-sum") == "true")) {
 		//переменная с значением выбранной ячейки
 		let sum = elems[1].getAttribute("data-number");
-		
+		//победа
+		if (sum == 2048) {
+			alert("Поздравляю! Вы выиграли!");
+			//переменная хранящая кнопку "начать игру"
+			let button = document.getElementsByClassName('start-game')[0];
+			//генерация клика на кнопку
+			button.click();
+		}
 		//функция сумирования одинаковых элементов по направлению движения
 		function sumElem(i) {
 			//суммирование и занесение данных в ячейку
@@ -130,6 +137,7 @@ function moveElem(i, j, direction) {
 			//тригер на, то что произошло суммирование
 			elems[1 + i].setAttribute("data-sum", false);
 			elems[1 + i].innerHTML = sum;
+			elems[1 + i].setAttribute('data-anim', 'eats');
 			//обнуление второй ячейки
 			elems[0 + i].setAttribute("data-number", 0);
 			elems[0 + i].innerHTML = "";
@@ -223,6 +231,7 @@ document.addEventListener('keydown', function (event) {
 	} 
 	//вызов функции для занесения в определенные атрибуты значений по умолчанию
 	sumAbort();
+
 	//проверка на то осталось может ли игра дальше продолжаться
 	if(!document.querySelector('[data-number = "0"]')) {
 		endGame();
@@ -300,6 +309,4 @@ function endGameCheck (i, j, direction) {
 		return false;
 	}
 }
-
-
 

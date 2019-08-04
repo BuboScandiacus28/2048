@@ -83,6 +83,7 @@ body {
 		}
 		/* Элементы игрового поля */
 			.element {
+				position: relative;
 				flex-basis: 23%;
 				background-color: #d6cdc4;
 				border-radius: 5%;
@@ -98,7 +99,8 @@ body {
 				align-items: center;
 				font-size: 300%;
 				font-weight: bold;
-
+				transform: translateX(0%);
+				transform: translateY(0%);
 			}
 				.element[data-number="2"],
 				.element[data-number="4"] {
@@ -137,3 +139,121 @@ body {
 				.element[data-number="2048"] {
 					background-color: #e8be4e;
 				}
+				.element[data-anim="right"].animate {
+					transform: translateX(108%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="right-2x"].animate {
+					transform: translateX(217%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="right-4x"].animate {
+					transform: translateX(326%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="left"].animate {
+					transform: translateX(-108%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="left-2x"].animate {
+					transform: translateX(-217%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="left-4x"].animate {
+					transform: translateX(-326%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="up"].animate {
+					transform: translateY(-108%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="up-2x"].animate {
+					transform: translateY(-217%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="up-4x"].animate {
+					transform: translateY(-326%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="down"].animate {
+					transform: translateY(108%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="down-2x"].animate {
+					transform: translateY(217%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+				.element[data-anim="down-4x"].animate {
+					transform: translateY(326%);
+					transition-property: transform;
+  				transition-duration: 0.5s;
+				}
+
+				@keyframes eat {       
+    			0% {
+    				flex-basis: 23%;
+    				margin: 1%;
+    			}             
+    			50% { 
+    				flex-basis: 25%;
+    				margin: 0%;
+    			} 
+  				100% {
+    				flex-basis: 23%;
+    				margin: 1%;
+  				}
+  			}
+
+				.element[data-anim="eats"].animate {
+					-webkit-animation: eat 0.5s 0.1s;
+					-o-animation: eat 0.5s 0.1s;
+					animation: eat 0.5s 0.1s;
+					transition-property: animation;
+  				z-index: 999;
+				}
+
+				@keyframes x {       
+    			0% {
+    				flex-basis: 11%;
+    				margin: 0% 7%; 
+    				opacity: 0;
+    				font-size: 0%;
+    			}
+  				100% {
+    				flex-basis: 23%;
+    				margin: 1%;
+    				opacity: 1;
+    				font-size: 300%;
+  				}
+  			}
+
+  			.element[data-anim="generation"].animate {
+					-webkit-animation: x 0.5s;
+					-o-animation: x 0.5s;
+					animation: x 0.5s;
+					transition-property: animation;
+  				z-index: 999;
+				}
+
+@media all and (max-device-width: 1024px) {
+	.element {
+		font-size: 200%;
+	}
+}
+
+@media all and (min-device-width: 2560px) {
+	.element {
+		font-size: 500%;
+	}
+}
